@@ -1,8 +1,8 @@
 const AdjustmentChoice = ({ groupBy, setGroupBy, sortBy, setSortBy }) => {
   return (
-    <div className="filter-card">
-      <div className="filters">
-        <label htmlFor="group-by">Group by:</label>
+    <>
+      <div className="filter-option">
+        <label htmlFor="group-by">Grouping</label>
         <select
           id="group-by"
           value={groupBy}
@@ -12,8 +12,9 @@ const AdjustmentChoice = ({ groupBy, setGroupBy, sortBy, setSortBy }) => {
           <option value="user">User</option>
           <option value="priority">Priority</option>
         </select>
-
-        <label htmlFor="sort-by">Sort by:</label>
+      </div>
+      <div className="filter-option">
+        <label htmlFor="sort-by">Ordering</label>
         <select
           id="sort-by"
           value={sortBy}
@@ -23,7 +24,7 @@ const AdjustmentChoice = ({ groupBy, setGroupBy, sortBy, setSortBy }) => {
           <option value="title">Title</option>
         </select>
       </div>
-    </div>
+    </>
   );
 };
 

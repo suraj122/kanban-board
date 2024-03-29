@@ -4,15 +4,16 @@
   line-height: 1.5;
   font-size: 12px;
   --white: #fff;
-  --base: #3e4046;
+  --dark-text: #27292f;
+  --light-text: #656971;
   --theme: #f4f5f8;
   --border-color: #bcc0cf;
-  --shadow: 1px 2px 6px rgba(97, 101, 105, 0.2);
+  --shadow: 1px 4px 8px rgba(134, 137, 140, 0.2);
   --border: 1px solid var(--border-color);
 }
 body {
   background-color: var(--theme);
-  color: #3e4046;
+  color: var(--dark-text);
 }
 .container {
   padding: 0 2rem;
@@ -23,38 +24,55 @@ body {
 .visible {
   display: inline-block;
 }
-.relative {
-  position: relative;
-}
 /* Header */
 .header {
   background-color: var(--white);
   padding: 1rem 0;
+  position: relative;
 }
 .header button {
   padding: 0.5rem 1rem;
-  font-weight: 700;
+  font-weight: 600;
+  color: var(--light-text);
   background-color: var(--white);
-  border: 1px solid var(--border);
+  border: var(--border);
   border-radius: 4px;
   box-shadow: var(--shadow);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.header button span {
+  margin: 0 0.3rem;
 }
 .filter-card {
-  border: 1px solid var(--border);
-  padding: 1rem;
+  border: var(--border);
   position: absolute;
-  background-color: var(--white);
+  padding: 0.2rem 1rem;
+  background-color: var(--theme);
   left: 2rem;
   top: 90%;
   border-radius: 4px;
   box-shadow: var(--shadow);
 }
+.filter-card label {
+  color: var(--light-text);
+  font-weight: 500;
+  display: inline-block;
+  width: 8rem;
+}
 .filter-option {
-  display: flex;
+  margin: 0.5rem 0;
+}
+.filter-option select {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: var(--border);
+  font-weight: 500;
+  /* color: var(--dark-text); */
 }
 .ticket-wrapper {
-  padding: 1.5rem 0;
+  padding: 1rem 0;
 }
 
 .ticket-card {
@@ -74,7 +92,6 @@ body {
     font-size: 16px;
   }
   .group-container {
-    margin-top: 32px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     gap: 32px;

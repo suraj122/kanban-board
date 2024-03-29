@@ -1,25 +1,27 @@
 import {
-  faCheckCircle,
-  faUser,
-  faExclamationCircle,
-} from "@fortawesome/free-solid-svg-icons";
+  FaRegCircle,
+  FaUser,
+  FaExclamationCircle,
+  FaCheckCircle,
+} from "react-icons/fa";
+import { PiCircleHalfFill } from "react-icons/pi";
 
 const getGroupIcon = (groupKey, groupBy) => {
   switch (groupBy) {
     case "status":
-      return groupKey === "Todo"
-        ? faCheckCircle
-        : groupKey === "In progress"
-        ? faExclamationCircle
-        : null;
+      return groupKey === "Todo" ? (
+        <FaRegCircle />
+      ) : groupKey === "In progress" ? (
+        <PiCircleHalfFill />
+      ) : null;
     case "user":
-      return faUser;
+      return <FaUser />;
     case "priority":
-      return groupKey === "0"
-        ? faCheckCircle
-        : groupKey === "1"
-        ? faExclamationCircle
-        : null;
+      return groupKey === "0" ? (
+        <FaCheckCircle />
+      ) : groupKey === "1" ? (
+        <FaExclamationCircle />
+      ) : null;
     default:
       return null;
   }
