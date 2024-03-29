@@ -1,5 +1,5 @@
 const TicketCard = ({ ticket }) => {
-  const { id, title } = ticket;
+  const { id, title, userId, tag, priority } = ticket;
   return (
     <article className="ticket-card">
       <header className="">
@@ -8,9 +8,10 @@ const TicketCard = ({ ticket }) => {
       </header>
 
       <h2>{title}</h2>
-      <h3>{ticket.userId}</h3>
+      <h3>{userId}</h3>
+      <span>{priority}</span>
       <footer>
-        <span>Feature Request</span>
+        <span>{tag[0]}</span>
       </footer>
     </article>
   );

@@ -2,6 +2,13 @@ import TicketCard from "./TicketCard";
 import useFetchData from "../utils/useFetchData";
 import { useEffect, useState } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckCircle,
+  faUser,
+  faExclamationCircle,
+} from "@fortawesome/free-solid-svg-icons";
+
 const TicketList = () => {
   const [groupedTickets, setGroupedTickets] = useState({});
   const [groupBy, setGroupBy] = useState("status");
@@ -26,6 +33,27 @@ const TicketList = () => {
     groupTickets();
   }, [groupBy, ticketData]);
 
+  useEffect(() => {
+    // Function to sort tickets within each group
+    const sortTickets = () => {
+      const sorted = {};
+      Object.keys(groupedTickets).forEach((groupKey) => {
+        const group = groupedTickets[groupKey];
+        if (sortBy === "priority") {
+          sorted[groupKey] = group.sort((a, b) => a.priority - b.priority);
+        } else if (sortBy === "title") {
+          sorted[groupKey] = group.sort((a, b) =>
+            a.title.localeCompare(b.title)
+          );
+        }
+      });
+      setGroupedTickets(sorted);
+    };
+
+    sortTickets();
+  }, [sortBy]);
+
+  // Function to get group key for each ticket
   const getGroupKey = (ticket) => {
     switch (groupBy) {
       case "status":
@@ -41,6 +69,29 @@ const TicketList = () => {
         return "";
     }
   };
+
+  // Function to get icon for each group
+  const getGroupIcon = (groupKey) => {
+    switch (groupBy) {
+      case "status":
+        return groupKey === "Todo"
+          ? faCheckCircle
+          : groupKey === "In progress"
+          ? faExclamationCircle
+          : null;
+      case "user":
+        return faUser;
+      case "priority":
+        return groupKey === "0"
+          ? faCheckCircle
+          : groupKey === "1"
+          ? faExclamationCircle
+          : null;
+      default:
+        return null;
+    }
+  };
+
   return (
     <section className="ticket-wrapper">
       <div className="container">
@@ -69,7 +120,15 @@ const TicketList = () => {
         <div className="group-container">
           {Object.keys(groupedTickets).map((groupKey) => (
             <div key={groupKey} className="group">
-              <h2>{groupKey}</h2>
+              <h2>
+                {getGroupIcon(groupKey) && (
+                  <FontAwesomeIcon
+                    icon={getGroupIcon(groupKey)}
+                    className="group-icon"
+                  />
+                )}
+                {groupKey}
+              </h2>
               <div className="card-container">
                 {groupedTickets[groupKey].map((ticket) => (
                   <TicketCard key={ticket.id} ticket={ticket} />
