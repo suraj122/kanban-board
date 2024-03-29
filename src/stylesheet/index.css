@@ -73,8 +73,9 @@ body {
   :root {
     font-size: 16px;
   }
-  .ticket-wrapper .container {
-    display: grid;
+  .group-container {
+    margin-top: 32px;
+    display: flex;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     justify-content: space-between;

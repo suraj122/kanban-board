@@ -8,6 +8,7 @@ const TicketCard = ({ ticket }) => {
       </header>
 
       <h2>{title}</h2>
+      <h3>{ticket.userId}</h3>
       <footer>
         <span>Feature Request</span>
       </footer>
