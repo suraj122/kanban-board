@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FilterBy from "./FilterBy";
 
-const Header = () => {
+const Header = ({ groupBy, setGroupBy, sortBy, setSortBy }) => {
   const [isFilterCardhidden, setIsFilterCardHidden] = useState(false);
   return (
     <header className="header relative">
@@ -10,7 +10,12 @@ const Header = () => {
           Display
         </button>
         <div className={isFilterCardhidden ? "visible" : "hidden"}>
-          <FilterBy />
+          <FilterBy
+            groupBy={groupBy}
+            setGroupBy={setGroupBy}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+          />
         </div>
       </div>
     </header>

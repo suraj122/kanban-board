@@ -1,5 +1,6 @@
 const TicketCard = ({ ticket }) => {
   const { id, title, userId, tag, priority } = ticket;
+
   return (
     <article className="ticket-card">
       <header className="">

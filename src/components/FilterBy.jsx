@@ -1,17 +1,24 @@
-const AdjustmentChoice = () => {
+const AdjustmentChoice = ({ groupBy, setGroupBy, sortBy, setSortBy }) => {
   return (
     <div className="filter-card">
-      <div className="filter-option">
-        <label htmlFor="group-by">Grouping</label>
-        <select id="group-by">
+      <div className="filters">
+        <label htmlFor="group-by">Group by:</label>
+        <select
+          id="group-by"
+          value={groupBy}
+          onChange={(e) => setGroupBy(e.target.value)}
+        >
           <option value="status">Status</option>
           <option value="user">User</option>
           <option value="priority">Priority</option>
         </select>
-      </div>
-      <div className="filter-option">
-        <label htmlFor="sort-by">Ordering</label>
-        <select id="sort-by">
+
+        <label htmlFor="sort-by">Sort by:</label>
+        <select
+          id="sort-by"
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
           <option value="priority">Priority</option>
           <option value="title">Title</option>
         </select>
