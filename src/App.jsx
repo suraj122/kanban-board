@@ -1,7 +1,11 @@
+import Header from "./components/Header";
+import TicketList from "./components/TicketList";
+
 function App() {
   return (
     <>
-      <h1>Kanban Board</h1>
+      <Header />
+      <TicketList />
     </>
   );
 }

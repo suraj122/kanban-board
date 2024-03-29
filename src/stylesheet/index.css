@@ -3,16 +3,80 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-size: 12px;
+  --white: #fff;
+  --base: #3e4046;
+  --theme: #f4f5f8;
+  --border-color: #bcc0cf;
+  --shadow: 1px 2px 6px rgba(97, 101, 105, 0.2);
+  --border: 1px solid var(--border-color);
 }
 body {
-  background-color: #f4f5f8;
+  background-color: var(--theme);
+  color: #3e4046;
+}
+.container {
+  padding: 0 2rem;
+}
+.hidden {
+  display: none;
+}
+.visible {
+  display: inline-block;
+}
+.relative {
+  position: relative;
+}
+/* Header */
+.header {
+  background-color: var(--white);
+  padding: 1rem 0;
+}
+.header button {
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+.filter-card {
+  border: 1px solid var(--border);
+  padding: 1rem;
+  position: absolute;
+  background-color: var(--white);
+  left: 2rem;
+  top: 90%;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+}
+.filter-option {
+  display: flex;
+}
+.ticket-wrapper {
+  padding: 1.5rem 0;
+}
+
+.ticket-card {
+  border: var(--border);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  border-radius: 4px;
+  margin: 16px 0;
+  background-color: var(--white);
+}
+.ticket-card header {
+  display: flex;
+  justify-content: space-between;
 }
 @media screen and (min-width: 768px) {
   :root {
     font-size: 16px;
   }
-  h1 {
-    font-size: 2rem;
-    text-align: center;
+  .ticket-wrapper .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    justify-content: space-between;
   }
 }
