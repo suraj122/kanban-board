@@ -3,9 +3,10 @@ const getGroupKey = (ticket, groupBy, data) => {
   switch (groupBy) {
     case "status":
       return ticket.status;
-    case "user":
+    case "user": {
       const user = data?.users.find((user) => user.id === ticket.userId);
       return user ? user.name : "Unknown User";
+    }
     case "priority":
       return ticket.priority.toString();
     default:
