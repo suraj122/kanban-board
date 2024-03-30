@@ -2,7 +2,7 @@
 
 **Character Visualization**
 
-- https://character-visualization-eta.vercel.app/
+- https://github.com/suraj122/kanban-board
 
 ### Description
 
