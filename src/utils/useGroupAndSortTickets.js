@@ -3,8 +3,15 @@ import useFetchData from "./useFetchData";
 
 const useGroupTickets = (getGroupKey) => {
   const [groupedTickets, setGroupedTickets] = useState({});
-  const [groupBy, setGroupBy] = useState("status");
-  const [sortBy, setSortBy] = useState("priority");
+  const [sortedTickets, setSortedTickets] = useState({});
+  const [groupBy, setGroupBy] = useState(() => {
+    // Load groupBy state from localStorage or set default value
+    return localStorage.getItem("groupBy") || "status";
+  });
+  const [sortBy, setSortBy] = useState(() => {
+    // Load sortBy state from localStorage or set default value
+    return localStorage.getItem("sortBy") || "priority";
+  });
 
   const ticketData = useFetchData();
 
@@ -32,18 +39,28 @@ const useGroupTickets = (getGroupKey) => {
       Object.keys(groupedTickets).forEach((groupKey) => {
         const group = groupedTickets[groupKey];
         if (sortBy === "priority") {
-          sorted[groupKey] = group.sort((a, b) => a.priority - b.priority);
+          sorted[groupKey] = group.sort((a, b) => b.priority - a.priority);
         } else if (sortBy === "title") {
           sorted[groupKey] = group.sort((a, b) =>
             a.title.localeCompare(b.title)
           );
         }
       });
-      setGroupedTickets(sorted);
+      return sorted;
     };
 
-    sortTickets();
-  }, [sortBy]);
+    const updatedSortedTickets = sortTickets(groupedTickets);
+    setSortedTickets(updatedSortedTickets);
+  }, [sortBy, groupedTickets]);
+
+  // Save groupBy and sortBy states to localStorage when they change
+  useEffect(() => {
+    localStorage.setItem("groupBy", groupBy);
+  }, [groupBy, sortBy]);
+
+  useEffect(() => {
+    localStorage.setItem("sortBy", sortBy);
+  }, [sortBy, groupBy]);
 
   return { groupedTickets, groupBy, setGroupBy, sortBy, setSortBy };
 };
