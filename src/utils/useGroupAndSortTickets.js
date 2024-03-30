@@ -62,7 +62,14 @@ const useGroupTickets = (getGroupKey) => {
     localStorage.setItem("sortBy", sortBy);
   }, [sortBy, groupBy]);
 
-  return { groupedTickets, groupBy, setGroupBy, sortBy, setSortBy };
+  return {
+    groupedTickets,
+    sortedTickets,
+    groupBy,
+    setGroupBy,
+    sortBy,
+    setSortBy,
+  };
 };
 
 export default useGroupTickets;
