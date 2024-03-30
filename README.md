@@ -1,12 +1,14 @@
-# Character Visualization | An assignment by Haphil
+# Kanban Board | An assignment by Quicksell
 
 **Character Visualization**
 
-- https://github.com/suraj122/kanban-board
+Please visit for live preview:
+
+- https://kanban-board-five-ashy.vercel.app/
 
 ### Description
 
-The Character Visualization is an assignment provided as part of the interview process at Harphil software solution.
+The Kanban Board is an assignment provided as part of the interview process at Quicksell.
 
 ### Installation
 
@@ -20,7 +22,7 @@ The Character Visualization is an assignment provided as part of the interview p
 2. Navigate to the project directory:
 
 ```
-  cd character-visualization
+  cd kanban-board
 ```
 
 3. Install the project dependencies using npm:
